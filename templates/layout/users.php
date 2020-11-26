@@ -36,7 +36,7 @@
     <body>
         <?= $this->element('userHeader'); ?>
 
-        <?= $this->element('nav'); ?>
+        <?= $this->element('userNav'); ?>
 
 		<?= $this->fetch('content');?>
         

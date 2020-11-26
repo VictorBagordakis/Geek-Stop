@@ -33,4 +33,5 @@ class User extends Entity
         'modified' => true,
         'senha' => true,
     ];
+
 }

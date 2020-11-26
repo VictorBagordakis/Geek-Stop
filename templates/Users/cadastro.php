@@ -2,7 +2,7 @@
 	<h2>Cadastre-se</h2>
 	<div class="container" method="post">
         <?php
-            echo $this->Form->create();
+            echo $this->Form->create($user);
             echo $this->Form->controls(
                 [
                     'nome' => ['id'=>'nome', 'class' => 'campo', 'required' => true, 'placeholder'=>'Insira seu nome', 'type'=>'text', 'label' => ['text'=>'Nome', 'style' => 'font-weight: bold;']],

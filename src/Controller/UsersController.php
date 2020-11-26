@@ -2,6 +2,8 @@
 declare(strict_types=1);
 
 namespace App\Controller;
+use Cake\Auth\DefaultPasswordHasher;
+use Cake\Event\EventInterface;
 
 /**
  * Users Controller
@@ -17,18 +19,31 @@ class UsersController extends AppController
      * @return \Cake\Http\Response|null|void Renders view
      */
 
+    public function beforeFilter(EventInterface $event)
+    {
+        $this->set('Auth', $this->Auth);
+        
+
+    }
+
     public function initialize(): void
     {
         parent:: initialize();
         $this->loadComponent('Auth', [
-            'loginRedirect' => [
-                'controller' => 'Users',
-                'action' => 'index'
+            'authenticate' => [
+                'Form' => [
+                    'fields' => [
+                        'username' => 'email',
+                        'password' => 'senha'
+                    ]
+                ]
             ],
-            'logoutRedirect' => [
-                'controller' => 'GeekStop',
-                'action' => 'index'
-            ]
+            'loginAction' => [
+                'controller' => 'Users',
+                'action' => 'login'
+            ],
+             // If unauthorized, return them to page they were just on
+            'unauthorizedRedirect' => $this->referer()
         ]);
         $this->Auth->Allow('cadastro', 'login');
     }
@@ -47,40 +62,72 @@ class UsersController extends AppController
             $user->nome = $this->request->getData('nome');
             $user->email = $this->request->getData('email');
             $senha = $this->request->getData('senha');
-            $user->senha = hash($senha);
+            $this->compararSenhas();
+            $this->validarSenha();
+            $user->senha = (new DefaultPasswordHasher)->hash($senha);
             if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
-
-                return $this->redirect(['controller'=>'Users', 'action' => 'index']);
+                $this->Flash->success(__('Usuário cadastrado!'));
+                return $this->redirect(['controller'=>'Users', 'action'=>'login']);
             }
             $this->Flash->error(__('Não foi possível cadastrar. Por favor, tente novamente.'));
         }
+        $this->set('user', $user);
         
     }
 
     private function compararSenhas(){
-        var senha = document.getElementById("senha").value;
-        var confirmarSenha = document.getElementById("confirmarSenha").value;
-        if(senha != confirmarSenha){
-            alert("As senhas não coincidem!");
+        $senha = $this->request->getData('senha');
+        $confirmarSenha = $this->request->getData('confirmarSenha');
+        if($senha != $confirmarSenha){
             return false;
         }
-        return true;
     }
     
     private function validarSenha(){
-        var senha = document.getElementById("senha").value;
-        if(senha.length < 10){
-            alert("Sua senha deve possuir pelo menos 10 caracteres!");
+        $senha = $this->request->getData('senha');
+        if(strlen($senha) < 10){
             return false;
         }
-        return true;
     }
 
     public function login()
     {
         $this->viewBuilder()->setLayout('geekstop');
+        if ($this->request->is('post')) {
+            $user = $this->Auth->identify();
+            if ($user) {
+                $this->Auth->setUser($user);
+                return $this->redirect($this->Auth->redirectUrl(['controller'=>'Users', 'action'=>'index']));
+            }
+            $this->Flash->error('Usuário ou senha ínvalido, tente novamente');
+        }
     }
+    public function logout()
+    {
+        echo $this->Flash->success('You are now logged out.');
+        return $this->redirect($this->Auth->logout());
+    }
+
+    public function camisetas()
+    {
+        $this->viewBuilder()->setLayout('users');
+    }
+
+    public function bones()
+    {
+        $this->viewBuilder()->setLayout('users');
+    }
+
+    public function casacos()
+    {
+        $this->viewBuilder()->setLayout('users');
+    }
+
+    public function colecionaveis()
+    {
+        $this->viewBuilder()->setLayout('users');
+    }
+
 
     /**
      * View method
