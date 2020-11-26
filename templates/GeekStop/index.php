@@ -81,7 +81,7 @@
 					</div>
 				</div>
 				<div class="produto">
-					<?= $this->Html->image('acessorios\chaveiro1.jpg', ['alt' => 'Chaveiro Game of Thrones', 'class' => 'imagensProdutos']); ?>
+					<?= $this->Html->image('colecionavel\colecionavel1.jpg', ['alt' => 'Chaveiro Game of Thrones', 'class' => 'imagensProdutos']); ?>
 					<div id="infoProduto">
 						<span class="nomeProduto">Chaveiro Game of Thrones</span>
 						<span class="precoProduto">59,90</span>
@@ -89,7 +89,7 @@
 					</div>
 				</div>
 				<div class="produto">
-					<?= $this->Html->image('acessorios\chaveiro2.jpg', ['alt' => 'Chaveiro Harry Potter', 'class' => 'imagensProdutos']); ?>
+					<?= $this->Html->image('colecionavel\colecionavel3.jpg', ['alt' => 'Chaveiro Harry Potter', 'class' => 'imagensProdutos']); ?>
 					<div id="infoProduto">
 						<span class="nomeProduto">Chaveiro Harry Potter</span>
 						<span class="precoProduto">39,90</span>
