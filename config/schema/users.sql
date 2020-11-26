@@ -1,0 +1,8 @@
+CREATE TABLE users(
+    nome varchar(70) NOT NULL,
+    email varchar(320) NOT NULL UNIQUE,
+    created timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    modified timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    senha text NOT NULL,
+    id integer PRIMARY KEY AUTO_INCREMENT
+);
