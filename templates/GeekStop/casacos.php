@@ -8,7 +8,7 @@
                 <?= $this->Html->image('casacos\casaco1.jpg', ['alt' => 'Casaco Playstation', 'class' => 'imagensProdutos']); ?>
 		    	<div id="infoProduto">
 					<span class="nomeProduto">Casaco Playstation</span>
-					<span class="precoProduto">39,90</span>
+					<span class="precoProduto">129,90</span>
 					<button><span class="material-icons iconeAdicionarCarrinho">add_shopping_cart</span></button>
 				</div>
 			</div>
@@ -24,7 +24,7 @@
                 <?= $this->Html->image('casacos\casaco3.jpg', ['alt' => 'Casaco Star Wars', 'class' => 'imagensProdutos']); ?>
 				<div id="infoProduto">
 					<span class="nomeProduto">Casaco Star Wars</span>
-					<span class="precoProduto">39,90</span>
+					<span class="precoProduto">99,90</span>
 					<button><span class="material-icons iconeAdicionarCarrinho">add_shopping_cart</span></button>
 		    	</div>
 			</div>
@@ -32,7 +32,7 @@
                 <?= $this->Html->image('casacos\casaco4.jpg', ['alt' => 'Casaco Star Trek', 'class' => 'imagensProdutos']); ?>
 				<div id="infoProduto">
 					<span class="nomeProduto">Casaco Star Trek</span>
-					<span class="precoProduto">59,90</span>
+					<span class="precoProduto">79,90</span>
 					<button><span class="material-icons iconeAdicionarCarrinho">add_shopping_cart</span></button>
 				</div>
 			</div>
@@ -40,7 +40,7 @@
                 <?= $this->Html->image('casacos\casaco5.jpg', ['alt' => 'Casaco Avengers Endgame', 'class' => 'imagensProdutos']); ?>
 				<div id="infoProduto">
 					<span class="nomeProduto">Casaco Avengers Endgame</span>
-					<span class="precoProduto">79,90</span>
+					<span class="precoProduto">199,90</span>
 					<button><span class="material-icons iconeAdicionarCarrinho">add_shopping_cart</span></button>
 				</div>
 			</div>
@@ -48,7 +48,7 @@
                 <?= $this->Html->image('casacos\casaco6.jpg', ['alt' => 'Casaco Sonserina', 'class' => 'imagensProdutos']); ?>
 				<div id="infoProduto">
 					<span class="nomeProduto">Casaco Sonserina</span>
-					<span class="precoProduto">89,90</span>
+					<span class="precoProduto">99,90</span>
 					<button><span class="material-icons iconeAdicionarCarrinho">add_shopping_cart</span></button>
 				</div>
 			</div>

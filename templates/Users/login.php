@@ -2,6 +2,9 @@
 	<h2>Login</h2>
     <div class="container">
         <?php
+            echo $this->Flash->render('logoutSuccessMessage');
+            echo $this->Flash->render('loginErrorMessage');
+            echo $this->Flash->render('cadastroSuccessMessage');
             echo $this->Form->create();
             echo $this->Form->controls(
                 [

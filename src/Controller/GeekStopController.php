@@ -48,4 +48,9 @@ class GeekStopController extends AppController
     {
 
     }
+
+    public function carrinhoDeCompras()
+    {
+        
+    }
 }

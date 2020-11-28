@@ -9,7 +9,7 @@
 		<ul id="ulNavSecundaria">
 			<li><a href="<?= $this->Url->build(['controller'=>'Users', 'action'=>'login']); ?>" class="itemDecoration2">Login</a></li>
 			<li><a href="<?= $this->Url->build(['controller'=>'Users', 'action'=>'cadastro']); ?>" class="itemDecoration2">Cadastre-se</a></li>
-			<li><a href="<?= $this->Url->build(['controller'=>'Users', 'action'=>'carrinhoDeCompras']); ?>" class="itemDecoration2"><span class="material-icons">shopping_cart</span></a></li>
+			<li><a href="<?= $this->Url->build(['controller'=>'Geekstop', 'action'=>'carrinhoDeCompras']); ?>" class="itemDecoration2"><span class="material-icons">shopping_cart</span></a></li>
 		</ul>
 	</nav>
 </header>

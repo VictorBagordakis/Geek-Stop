@@ -66,10 +66,10 @@ class UsersController extends AppController
             $this->validarSenha();
             $user->senha = (new DefaultPasswordHasher)->hash($senha);
             if ($this->Users->save($user)) {
-                $this->Flash->success(__('Usuário cadastrado!'));
+                $this->Flash->success(__('Usuário cadastrado com sucesso! Faça o login.'), ['key'=>'cadastroSuccessMessage']);
                 return $this->redirect(['controller'=>'Users', 'action'=>'login']);
             }
-            $this->Flash->error(__('Não foi possível cadastrar. Por favor, tente novamente.'));
+            $this->Flash->error(__('Não foi possível cadastrar. Por favor, tente novamente.'), ['key'=>'cadastroErrorMessage']);
         }
         $this->set('user', $user);
         
@@ -99,12 +99,12 @@ class UsersController extends AppController
                 $this->Auth->setUser($user);
                 return $this->redirect($this->Auth->redirectUrl(['controller'=>'Users', 'action'=>'index']));
             }
-            $this->Flash->error('Usuário ou senha ínvalido, tente novamente');
+            $this->Flash->error(__('Usuário ou senha ínvalido, tente novamente'), ['key'=>'loginErrorMessage']);
         }
     }
     public function logout()
     {
-        echo $this->Flash->success('You are now logged out.');
+        echo $this->Flash->success(__('Logout efetuado com sucesso!'), ['key'=>'logoutSuccessMessage']);
         return $this->redirect($this->Auth->logout());
     }
 

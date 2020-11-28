@@ -1,7 +1,8 @@
 <div id="cadastro">
 	<h2>Cadastre-se</h2>
-	<div class="container" method="post">
+	<div class="container">
         <?php
+            echo $this->Flash->render('cadastroErrorMessage');
             echo $this->Form->create($user);
             echo $this->Form->controls(
                 [

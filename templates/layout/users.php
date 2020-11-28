@@ -34,7 +34,14 @@
     </head>
 
     <body>
-        <?= $this->element('userHeader'); ?>
+        <?php
+            if(!$Auth)
+            {
+                echo $this->element('header');
+            }
+            else
+                echo $this->element('userHeader');
+        ?>
 
         <?= $this->element('userNav'); ?>
 
