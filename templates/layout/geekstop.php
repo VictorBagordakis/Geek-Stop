@@ -38,9 +38,7 @@
 
         <?= $this->element('nav'); ?>
 
-        <div id = "content">
-            <?= $this->fetch('content');?>
-        </div>
+		<?= $this->fetch('content');?>
         
         <?= $this->element('footer');?>
     </body>

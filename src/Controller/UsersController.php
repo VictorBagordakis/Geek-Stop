@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Controller;
 use Cake\Auth\DefaultPasswordHasher;
 use Cake\Event\EventInterface;
+use Cake\ORM\TableRegistry;
 
 /**
  * Users Controller
@@ -22,7 +23,6 @@ class UsersController extends AppController
     public function beforeFilter(EventInterface $event)
     {
         $this->set('Auth', $this->Auth);
-        
 
     }
 
@@ -48,10 +48,6 @@ class UsersController extends AppController
         $this->Auth->Allow('cadastro', 'login');
     }
 
-    public function index()
-    {
-        $this->viewBuilder()->setLayout('users');
-    }
 
     public function cadastro()
     {
@@ -102,31 +98,59 @@ class UsersController extends AppController
             $this->Flash->error(__('Usuário ou senha ínvalido, tente novamente'), ['key'=>'loginErrorMessage']);
         }
     }
+
     public function logout()
     {
         echo $this->Flash->success(__('Logout efetuado com sucesso!'), ['key'=>'logoutSuccessMessage']);
         return $this->redirect($this->Auth->logout());
     }
 
+    public function index()
+    {
+        $this->viewBuilder()->setLayout('users');  
+        $produtos = TableRegistry::get('produtos');
+        $query = $produtos->find('all');
+        $this->set('produtos', $query); 
+    }
+
     public function camisetas()
     {
         $this->viewBuilder()->setLayout('users');
+        $produtos = TableRegistry::get('produtos');
+        $query = $produtos->find('all');
+        $this->set('produtos', $query);
     }
 
     public function bones()
     {
         $this->viewBuilder()->setLayout('users');
+        $produtos = TableRegistry::get('produtos');
+        $query = $produtos->find('all');
+        $this->set('produtos', $query);
     }
 
     public function casacos()
     {
         $this->viewBuilder()->setLayout('users');
+        $produtos = TableRegistry::get('produtos');
+        $query = $produtos->find('all');
+        $this->set('produtos', $query);
     }
 
     public function colecionaveis()
     {
         $this->viewBuilder()->setLayout('users');
+        $produtos = TableRegistry::get('produtos');
+        $query = $produtos->find('all');
+        $this->set('produtos', $query);
     }
+
+    public function carrinhoDeCompras()
+    {
+        $this->viewBuilder()->setLayout('users');
+    }
+
+    
 
 
     /**

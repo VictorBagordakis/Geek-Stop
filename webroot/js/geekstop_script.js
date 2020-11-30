@@ -25,64 +25,64 @@ function filtroGenero(){
    var tamanhos = [
 
     {
-      produto: 'camisetaMarioMasculina',
+      produto: 'camisetaMasculina1',
       tamanho: ['infantil','P', 'M', 'G', 'GG'],
       
     },
     {
-        produto: 'camisetaDororoMasculina',
+        produto: 'camisetaMasculina2',
         tamanho: ['P', 'M', 'G', 'GG'],
         
       },
       {
-        produto: 'camisetaSaintSeiyaMasculina',
+        produto: 'camisetaMasculina3',
         tamanho: ['infantil','P', 'M', 'G', 'GG'],
         
       },
       {
-        produto: 'camisetaNarutoMasculina',
+        produto: 'camisetaMasculina4',
         tamanho: ['P', 'M', 'G', 'GG'],
         
       },
       {
-        produto: 'camisetaFlashMasculina',
+        produto: 'camisetaMasculina5',
         tamanho: ['infantil','P', 'GG'],
         
       },
       {
-        produto: 'camisetaIronManMasculina',
+        produto: 'camisetaMasculina6',
         tamanho: ['P', 'M', 'G'],
         
       },
       {
-        produto: 'camisetaAvengersFeminina',
+        produto: 'camisetaFeminina1',
         tamanho: ['infantil','P', 'M', 'G', 'GG'],
         
       },
        
       
       {
-        produto: 'camisetaStarWarsFeminina',
+        produto: 'camisetaFeminina2',
         tamanho: ['P', 'G', 'GG'],
         
       },
       {
-        produto: 'camisetaGameOfThronesFeminina1',
+        produto: 'camisetaFeminina3',
         tamanho: ['infantil','P', 'M', 'G', 'GG'],
         
       },
       {
-        produto: 'camisetaGameOfThronesFeminina2',
+        produto: 'camisetaFeminina4',
         tamanho: ['infantil','P', 'M', 'G', 'GG'],
         
       },
       {
-        produto: 'camisetaBatmanFeminina1',
+        produto: 'camisetaFeminina5',
         tamanho: ['P', 'M', 'GG'],
         
       },
       {
-        produto: 'camisetaBatmanFeminina2',
+        produto: 'camisetaFeminina6',
         tamanho: ['infantil','P', 'M', 'G'],
         
       },

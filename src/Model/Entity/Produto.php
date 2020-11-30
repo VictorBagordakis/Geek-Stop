@@ -10,6 +10,8 @@ use Cake\ORM\Entity;
  *
  * @property string $nome
  * @property float $preco
+ * @property string $tipo
+ * @property string|null $genero
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
  * @property int $id
@@ -28,6 +30,8 @@ class Produto extends Entity
     protected $_accessible = [
         'nome' => true,
         'preco' => true,
+        'tipo' => true,
+        'genero' => true,
         'created' => true,
         'modified' => true,
     ];

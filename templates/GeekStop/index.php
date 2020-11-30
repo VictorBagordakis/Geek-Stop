@@ -24,79 +24,59 @@
 		<div class="secaoProdutosTelaInicial">
 			<span class="destaques">Destaques</span>
 			<div class="produtos" >
-				<div class="produto">
-					<?= $this->Html->image('camisetas\camisetas_masculinas\camiseta_masculina1.jpg', ['alt' => 'Camiseta do Mário masculina', 'class' => 'imagensProdutos']); ?>
-					<div id="infoProduto">
-						<span class="nomeProduto">Camiseta Mário masculina</span>
-						<span class="precoProduto">99,90</span>
-						<button><span class="material-icons iconeAdicionarCarrinho">add_shopping_cart</span></button>
-					</div>
-				</div>
-				<div class="produto">
-					<?= $this->Html->image('camisetas\camisetas_masculinas\camiseta_masculina2.jpg', ['alt' => 'Camiseta Dororo masculina', 'class' => 'imagensProdutos']); ?>
-					<div id="infoProduto">
-						<span class="nomeProduto">Camiseta Dororo masculina</span>
-						<span class="precoProduto">59,90</span>
-						<button><span class="material-icons iconeAdicionarCarrinho">add_shopping_cart</span></button>
-					</div>
-				</div>
-				<div class="produto">
-					<?= $this->Html->image('camisetas\camisetas_masculinas\camiseta_masculina3.jpg', ['alt' => 'Camiseta Saint Seiya masculina', 'class' => 'imagensProdutos']); ?>
-					<div id="infoProduto">
-						<span class="nomeProduto">Camiseta Saint Seiya masculina</span>
-						<span class="precoProduto">39,90</span>
-						<button><span class="material-icons iconeAdicionarCarrinho">add_shopping_cart</span></button>
-					</div>
-				</div>
-				<div class="produto">
-					<?= $this->Html->image('camisetas\camisetas_femininas\camiseta_feminina1.jpg', ['alt' => 'Camiseta Avengers feminina', 'class' => 'imagensProdutos']); ?>
-					<div id="infoProduto">
-						<span class="nomeProduto">Camiseta Avengers feminina</span>
-						<span class="precoProduto">99,90</span>
-						<button><span class="material-icons iconeAdicionarCarrinho">add_shopping_cart</span></button>
-					</div>
-				</div>
-				<div class="produto">
-					<?= $this->Html->image('camisetas\camisetas_femininas\camiseta_feminina2.jpg', ['alt' => 'Camiseta Star wars feminina', 'class' => 'imagensProdutos']); ?>
-					<div id="infoProduto">
-						<span class="nomeProduto">Camiseta Star wars feminina</span>
-						<span class="precoProduto">59,90</span>
-						<button><span class="material-icons iconeAdicionarCarrinho">add_shopping_cart</span></button>
-					</div>
-				</div>
-				<div class="produto">
-					<?= $this->Html->image('camisetas\camisetas_femininas\camiseta_feminina3.jpg', ['alt' => 'Camiseta Game of Thrones feminina', 'class' => 'imagensProdutos']); ?>
-					<div id="infoProduto">
-						<span class="nomeProduto">Camiseta Game of Thrones feminina</span>
-						<span class="precoProduto">39,90</span>
-						<button><span class="material-icons iconeAdicionarCarrinho">add_shopping_cart</span></button>
-					</div>
-				</div>
-				<div class="produto">
-					<?= $this->Html->image('bones\bone1.jpg', ['alt' => 'Boné Batman', 'class' => 'imagensProdutos']); ?>
-					<div id="infoProduto">
-						<span class="nomeProduto">Boné Batman</span>
-						<span class="precoProduto">99,90</span>
-						<button><span class="material-icons iconeAdicionarCarrinho">add_shopping_cart</span></button>
-					</div>
-				</div>
-				<div class="produto">
-					<?= $this->Html->image('colecionavel\colecionavel1.jpg', ['alt' => 'Chaveiro Game of Thrones', 'class' => 'imagensProdutos']); ?>
-					<div id="infoProduto">
-						<span class="nomeProduto">Chaveiro Game of Thrones</span>
-						<span class="precoProduto">59,90</span>
-						<button><span class="material-icons iconeAdicionarCarrinho">add_shopping_cart</span></button>
-					</div>
-				</div>
-				<div class="produto">
-					<?= $this->Html->image('colecionavel\colecionavel3.jpg', ['alt' => 'Chaveiro Harry Potter', 'class' => 'imagensProdutos']); ?>
-					<div id="infoProduto">
-						<span class="nomeProduto">Chaveiro Harry Potter</span>
-						<span class="precoProduto">39,90</span>
-						<button><span class="material-icons iconeAdicionarCarrinho">add_shopping_cart</span></button>
-					</div>
-				</div>
+				<?php $cont = 1;
+				foreach($produtos as $produto):
+				if($produto->tipo == "camiseta" && $produto->genero == "feminino"):
+				echo '<div class="produto" id = "camisetaFeminina' . $cont.'">';
+					echo $this->Html->image('camisetas\camisetas_femininas\camiseta_feminina' . $cont . '.jpg', ['alt' => $produto->nome, 'class' => 'imagensProdutos']);
+					echo '<div id="infoProduto">';
+						echo '<span class="nomeProduto">' . $produto->nome . '</span>';
+						echo '<span class="precoProduto">' . number_format($produto->preco, 2, ',', '') . '</span>';
+						echo '<a href="' . $this->Url->build(['controller'=>'Geekstop', 'action'=>'carrinhoDeCompras']) . '" class="button"><span class="material-icons iconeAdicionarCarrinho">add_shopping_cart</span></a>';
+					echo '</div>';
+				echo '</div>';
+				if($cont == 3):
+					break;
+				endif;
+				$cont++; 
+				endif;
+				endforeach;?>
+
+				<?php $cont = 1;
+				foreach($produtos as $produto):
+				if($produto->tipo == "camiseta" && $produto->genero == "masculino"):
+				echo '<div class="produto" id = "camisetaMasculina' . $cont.'">';
+					echo $this->Html->image('camisetas\camisetas_masculinas\camiseta_masculina' . $cont . '.jpg', ['alt' => $produto->nome, 'class' => 'imagensProdutos']);
+					echo '<div id="infoProduto">';
+						echo '<span class="nomeProduto">' . $produto->nome . '</span>';
+						echo '<span class="precoProduto">' . number_format($produto->preco, 2, ',', '') . '</span>';
+						echo '<a href="' . $this->Url->build(['controller'=>'Geekstop', 'action'=>'carrinhoDeCompras']) . '" class="button"><span class="material-icons iconeAdicionarCarrinho">add_shopping_cart</span></a>';
+					echo '</div>';
+				echo '</div>';
+				if($cont == 3):
+					break;
+				endif;
+				$cont++; 
+				endif;
+				endforeach;?>
+
+				<?php $cont = 1;
+				foreach($produtos as $produto):
+				if($produto->tipo == "colecionaveis"):
+				echo '<div class="produto" id = "colecionavel"' . $cont.'>';
+					echo $this->Html->image('colecionavel\colecionavel' . $cont . '.jpg', ['alt' => $produto->nome, 'class' => 'imagensProdutos']);
+					echo '<div id="infoProduto">';
+						echo '<span class="nomeProduto">' . $produto->nome . '</span>';
+						echo '<span class="precoProduto">' . number_format($produto->preco, 2, ',', '') . '</span>';
+						echo '<a href="' . $this->Url->build(['controller'=>'Geekstop', 'action'=>'carrinhoDeCompras']) . '" class="button"><span class="material-icons iconeAdicionarCarrinho">add_shopping_cart</span></a>';
+					echo '</div>';
+				echo '</div>';
+				if($cont == 3):
+					break;
+				endif;
+				$cont++; 
+				endif;
+				endforeach;?>
 			</div>
 		</div>
-
 	</section>

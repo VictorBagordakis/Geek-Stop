@@ -22,107 +22,39 @@
 	<div id = "todasCamisas" class="secaoProdutos">
 		<div id="secaoMasculina" >
 			<div id="camisetasMasculinas" class="produtos">
-				<div class="produto" id= "camisetaMarioMasculina">
-                    <?= $this->Html->image('camisetas\camisetas_masculinas\camiseta_masculina1.jpg', ['alt' => 'Camiseta do Mário masculina', 'class' => 'imagensProdutos']); ?>
-					<div id="infoProduto">
-						<span class="nomeProduto">Camiseta Mário masculina</span>
-						<span class="precoProduto">99,90</span>
-						<button><span class="material-icons iconeAdicionarCarrinho">add_shopping_cart</span></button>
-					</div>
-				</div>
-				<div class="produto" id= "camisetaDororoMasculina">
-                    <?= $this->Html->image('camisetas\camisetas_masculinas\camiseta_masculina2.jpg', ['alt' => 'Camiseta Dororo masculina', 'class' => 'imagensProdutos']); ?>
-					<div id="infoProduto">
-						<span class="nomeProduto">Camiseta Dororo masculina</span>
-						<span class="precoProduto">59,90</span>
-						<button><span class="material-icons iconeAdicionarCarrinho">add_shopping_cart</span></button>
-					</div>
-				</div>
-				<div class="produto" id= "camisetaSaintSeiyaMasculina">
-                    <?= $this->Html->image('camisetas\camisetas_masculinas\camiseta_masculina3.jpg', ['alt' => 'Camiseta Saint Seiya masculina', 'class' => 'imagensProdutos']); ?>
-					<div id="infoProduto">
-						<span class="nomeProduto">Camiseta Saint Seiya masculina</span>
-						<span class="precoProduto">39,90</span>
-						<button><span class="material-icons iconeAdicionarCarrinho">add_shopping_cart</span></button>
-					</div>
-				</div>
-				<div class="produto" id= "camisetaNarutoMasculina">
-                    <?= $this->Html->image('camisetas\camisetas_masculinas\camiseta_masculina4.jpg', ['alt' => 'Camiseta Naruto masculina', 'class' => 'imagensProdutos']); ?>
-					<div id="infoProduto">
-						<span class="nomeProduto">Camiseta Naruto masculina</span>
-						<span class="precoProduto">59,90</span>
-						<button><span class="material-icons iconeAdicionarCarrinho">add_shopping_cart</span></button>
-					</div>
-				</div>
-				<div class="produto" id= "camisetaFlashMasculina">
-                    <?= $this->Html->image('camisetas\camisetas_masculinas\camiseta_masculina5.jpg', ['alt' => 'Camiseta Flash masculina', 'class' => 'imagensProdutos']); ?>
-					<div id="infoProduto">
-						<span class="nomeProduto">Camiseta Flash masculina</span>
-						<span class="precoProduto">79,90</span>
-						<button><span class="material-icons iconeAdicionarCarrinho">add_shopping_cart</span></button>
-					</div>
-				</div>
-				<div class="produto" id= "camisetaIronManMasculina">
-                    <?= $this->Html->image('camisetas\camisetas_masculinas\camiseta_masculina6.jpg', ['alt' => 'Camiseta Iron Man masculina', 'class' => 'imagensProdutos']); ?>
-					<div id="infoProduto">
-						<span class="nomeProduto">Camiseta Iron man masculina</span>
-						<span class="precoProduto">89,90</span>
-						<button><span class="material-icons iconeAdicionarCarrinho">add_shopping_cart</span></button>
-					</div>
-				</div>
+				<?php $cont = 1;
+				foreach($produtos as $produto):
+				if($produto->tipo == "camiseta" && $produto->genero == "masculino"):
+				echo '<div class="produto" id = "camisetaMasculina' . $cont.'">';
+					echo $this->Html->image('camisetas\camisetas_masculinas\camiseta_masculina' . $cont . '.jpg', ['alt' => $produto->nome, 'class' => 'imagensProdutos']);
+					echo '<div id="infoProduto">';
+						echo '<span class="nomeProduto">' . $produto->nome . '</span>';
+						echo '<span class="precoProduto">' . number_format($produto->preco, 2, ',', '') . '</span>';
+						echo '<a href="' . $this->Url->build(['controller'=>'Geekstop', 'action'=>'carrinhoDeCompras']) . '" class="button"><span class="material-icons iconeAdicionarCarrinho">add_shopping_cart</span></a>';
+					echo '</div>';
+				echo '</div>';
+				$cont++; 
+				endif;
+				endforeach;?>
 			</div>
 		</div>
 
 		<div id="secaoFeminina">
 			<div id="camisetasFemininas" class="produtos">
-				<div class="produto" id = "camisetaAvengersFeminina">
-                <?= $this->Html->image('camisetas\camisetas_femininas\camiseta_feminina1.jpg', ['alt' => 'Camiseta Avengers feminina', 'class' => 'imagensProdutos']); ?>
-					<div id="infoProduto">
-						<span class="nomeProduto">Camiseta Avengers feminina</span>
-						<span class="precoProduto">59,90</span>
-						<button><span class="material-icons iconeAdicionarCarrinho">add_shopping_cart</span></button>
-					</div>
-				</div>
-				<div class="produto" id="camisetaStarWarsFeminina">
-                <?= $this->Html->image('camisetas\camisetas_femininas\camiseta_feminina2.jpg', ['alt' => 'Camiseta Star wars feminina', 'class' => 'imagensProdutos']); ?>
-					<div id="infoProduto">
-						<span class="nomeProduto">Camiseta Star Wars feminina</span>
-						<span class="precoProduto">79,90</span>
-						<button><span class="material-icons iconeAdicionarCarrinho">add_shopping_cart</span></button>
-					</div>
-				</div>
-				<div class="produto" id="camisetaGameOfThronesFeminina1">
-                <?= $this->Html->image('camisetas\camisetas_femininas\camiseta_feminina3.jpg', ['alt' => 'Camiseta Game of Thrones feminina', 'class' => 'imagensProdutos']); ?>
-					<div id="infoProduto">
-						<span class="nomeProduto">Camiseta Game of Thrones feminina</span>
-						<span class="precoProduto">89,90</span>
-						<button><span class="material-icons iconeAdicionarCarrinho">add_shopping_cart</span></button>
-					</div>
-				</div>
-				<div class="produto" id="camisetaGameOfThronesFeminina2">
-					<?= $this->Html->image('camisetas\camisetas_femininas\camiseta_feminina4.jpg', ['alt' => 'Camiseta Game of Thrones feminina', 'class' => 'imagensProdutos']); ?>
-					<div id="infoProduto">
-						<span class="nomeProduto">Camiseta Game of Thrones feminina</span>
-						<span class="precoProduto">59,90</span>
-						<button><span class="material-icons iconeAdicionarCarrinho">add_shopping_cart</span></button>
-					</div>
-				</div>
-				<div class="produto" id="camisetaBatmanFeminina1">
-					<?= $this->Html->image('camisetas\camisetas_femininas\camiseta_feminina5.jpg', ['alt' => 'Camiseta Batman feminina 1', 'class' => 'imagensProdutos']); ?>
-					<div id="infoProduto">
-						<span class="nomeProduto">Camiseta Batman feminina</span>
-						<span class="precoProduto">49,90</span>
-						<button><span class="material-icons iconeAdicionarCarrinho">add_shopping_cart</span></button>
-					</div>
-				</div>
-				<div class="produto" id="camisetaBatmanFeminina2">
-					<?= $this->Html->image('camisetas\camisetas_femininas\camiseta_feminina6.jpg', ['alt' => 'Camiseta Batman feminina 2', 'class' => 'imagensProdutos']); ?>
-					<div id="infoProduto">
-						<span class="nomeProduto">Camiseta Batman feminina</span>
-						<span class="precoProduto">39,90</span>
-						<button><span class="material-icons iconeAdicionarCarrinho">add_shopping_cart</span></button>
-					</div>
-				</div>						
+				<?php $cont = 1;
+				foreach($produtos as $produto):
+				if($produto->tipo == "camiseta" && $produto->genero == "feminino"):
+				echo '<div class="produto" id = "camisetaFeminina' . $cont.'">';
+					echo $this->Html->image('camisetas\camisetas_femininas\camiseta_feminina' . $cont . '.jpg', ['alt' => $produto->nome, 'class' => 'imagensProdutos']);
+					echo '<div id="infoProduto">';
+						echo '<span class="nomeProduto">' . $produto->nome . '</span>';
+						echo '<span class="precoProduto">' . number_format($produto->preco, 2, ',', '') . '</span>';
+						echo '<a href="' . $this->Url->build(['controller'=>'CarrinhoDeCompras', 'action'=>'adicionarAoCarrinhoDeCompras']) . '" class="button"><span class="material-icons iconeAdicionarCarrinho">add_shopping_cart</span></a>';
+					echo '</div>';
+				echo '</div>';
+				$cont++; 
+				endif;
+				endforeach;?>				
 			</div>
 		</div>
 	</div>

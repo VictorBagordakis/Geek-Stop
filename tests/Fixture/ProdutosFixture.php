@@ -19,6 +19,8 @@ class ProdutosFixture extends TestFixture
     public $fields = [
         'nome' => ['type' => 'string', 'length' => 70, 'null' => false, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null],
         'preco' => ['type' => 'float', 'length' => 5, 'precision' => 2, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => ''],
+        'tipo' => ['type' => 'string', 'length' => 13, 'null' => false, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null],
+        'genero' => ['type' => 'string', 'length' => 9, 'null' => true, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null],
         'created' => ['type' => 'timestamp', 'length' => null, 'precision' => null, 'null' => false, 'default' => 'current_timestamp()', 'comment' => ''],
         'modified' => ['type' => 'timestamp', 'length' => null, 'precision' => null, 'null' => false, 'default' => 'current_timestamp()', 'comment' => ''],
         'id' => ['type' => 'integer', 'length' => null, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
@@ -42,8 +44,10 @@ class ProdutosFixture extends TestFixture
             [
                 'nome' => 'Lorem ipsum dolor sit amet',
                 'preco' => 1,
-                'created' => 1606490664,
-                'modified' => 1606490664,
+                'tipo' => 'Lorem ipsum',
+                'genero' => 'Lorem i',
+                'created' => 1606611088,
+                'modified' => 1606611088,
                 'id' => 1,
             ],
         ];

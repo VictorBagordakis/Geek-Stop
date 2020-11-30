@@ -66,6 +66,17 @@ class ProdutosTable extends Table
             ->notEmptyString('preco');
 
         $validator
+            ->scalar('tipo')
+            ->maxLength('tipo', 13)
+            ->requirePresence('tipo', 'create')
+            ->notEmptyString('tipo');
+
+        $validator
+            ->scalar('genero')
+            ->maxLength('genero', 9)
+            ->allowEmptyString('genero');
+
+        $validator
             ->integer('id')
             ->allowEmptyString('id', null, 'create');
 

@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 use Cake\Event\EventInterface;
-
+use Cake\ORM\TableRegistry;
 
 class GeekStopController extends AppController
 {
@@ -11,38 +11,22 @@ class GeekStopController extends AppController
      *
      * @return \Cake\Http\Response|null|void Renders view
      */
-
+    
     public function beforeFilter(EventInterface $event)
     {
         $this->viewBuilder()->setLayout('geekstop');
-        
+
 
     }
 
     public function index()
     {
-        
+        $this->viewBuilder()->setLayout('geekstop');
+        $produtos = TableRegistry::get('produtos');
+        $query = $produtos->find('all');
+        $this->set('produtos', $query);   
     }
 
-    public function camisetas()
-    {
-
-    }
-
-    public function casacos()
-    {
-
-    }
-
-    public function colecionaveis()
-    {
-
-    }
-
-    public function bones()
-    {
-
-    }
 
     public function ajuda()
     {
@@ -53,4 +37,35 @@ class GeekStopController extends AppController
     {
         
     }
+
+    public function casacos()
+    {
+        $this->viewBuilder()->setLayout('geekstop');
+        $produtos = TableRegistry::get('produtos');
+        $query = $produtos->find('all');
+        $this->set('produtos', $query);
+    }
+
+    public function camisetas(){
+        $this->viewBuilder()->setLayout('geekstop');
+        $produtos = TableRegistry::get('produtos');
+        $query = $produtos->find('all');
+        $this->set('produtos', $query);
+    }
+
+    public function colecionaveis(){
+        $this->viewBuilder()->setLayout('geekstop');
+        $produtos = TableRegistry::get('produtos');
+        $query = $produtos->find('all');
+        $this->set('produtos', $query);
+    }
+
+    public function bones(){
+        $this->viewBuilder()->setLayout('geekstop');
+        $produtos = TableRegistry::get('produtos');
+        $query = $produtos->find('all');
+        $this->set('produtos', $query);
+    }
+
+
 }

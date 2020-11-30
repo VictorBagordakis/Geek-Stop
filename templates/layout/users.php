@@ -43,8 +43,9 @@
                 echo $this->element('userHeader');
         ?>
 
-        <?= $this->element('userNav'); ?>
-
+       
+        <?= $this->element('userNav');?>
+        
 		<?= $this->fetch('content');?>
         
         <?= $this->element('footer');?>

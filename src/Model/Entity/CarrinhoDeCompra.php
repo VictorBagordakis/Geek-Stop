@@ -6,12 +6,12 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Usersproduto Entity
+ * CarrinhoDeCompra Entity
  *
  * @property int $idUser
  * @property int $idProduto
  */
-class Usersproduto extends Entity
+class CarrinhoDeCompra extends Entity
 {
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().

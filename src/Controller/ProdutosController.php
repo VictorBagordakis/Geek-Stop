@@ -2,10 +2,12 @@
 declare(strict_types=1);
 
 namespace App\Controller;
-
+use Cake\Event\EventInterface;
+use Cake\ORM\TableRegistry;
 /**
  * Produtos Controller
  *
+ * @property \App\Model\Table\ProdutosTable $Produtos
  * @method \App\Model\Entity\Produto[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
 class ProdutosController extends AppController
@@ -18,9 +20,10 @@ class ProdutosController extends AppController
     public function index()
     {
         $produtos = $this->paginate($this->Produtos);
-
         $this->set(compact('produtos'));
     }
+
+    
 
     /**
      * View method
