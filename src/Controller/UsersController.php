@@ -150,7 +150,18 @@ class UsersController extends AppController
         $this->viewBuilder()->setLayout('users');
     }
 
-    
+    public function perfil()
+    {
+
+    }
+
+    public function detalhes($id)
+    {
+        $this->viewBuilder()->setLayout('users');
+        $produtos = TableRegistry::get('produtos');
+        $produto = $produtos->get($id);
+        $this->set('produto', $produto);
+    }
 
 
     /**

@@ -23,6 +23,11 @@ class CarrinhoDeComprasController extends AppController
         $this->set(compact('carrinhoDeCompras'));
     }
 
+    public function adicionarAoCarrinhoDeCompras()
+    {
+        
+    }
+
     /**
      * View method
      *

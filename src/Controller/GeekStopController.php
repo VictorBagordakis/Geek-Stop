@@ -67,5 +67,12 @@ class GeekStopController extends AppController
         $this->set('produtos', $query);
     }
 
+    public function detalhes($id)
+    {
+        $this->viewBuilder()->setLayout('geekstop');
+        $produtos = TableRegistry::get('produtos');
+        $produto = $produtos->get($id);
+        $this->set('produto', $produto);
+    }
 
 }

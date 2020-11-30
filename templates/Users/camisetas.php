@@ -26,9 +26,9 @@
 				foreach($produtos as $produto):
 				if($produto->tipo == "camiseta" && $produto->genero == "masculino"):
 				echo '<div class="produto" id = "camisetaMasculina' . $cont.'">';
-					echo $this->Html->image('camisetas\camisetas_masculinas\camiseta_masculina' . $cont . '.jpg', ['alt' => $produto->nome, 'class' => 'imagensProdutos']);
+					echo $this->Html->image($produto->imagem, ['alt' => $produto->nome, 'class' => 'imagensProdutos']);
 					echo '<div id="infoProduto">';
-						echo '<span class="nomeProduto">' . $produto->nome . '</span>';
+						echo '<a href="' . $this->Url->build(['controller'=>'Users', 'action'=>'detalhes', $produto->id]) . '" class="nomeProduto">' . $produto->nome . '</a>';
 						echo '<span class="precoProduto">' . number_format($produto->preco, 2, ',', '') . '</span>';
 						echo '<a href="' . $this->Url->build(['controller'=>'Geekstop', 'action'=>'carrinhoDeCompras']) . '" class="button"><span class="material-icons iconeAdicionarCarrinho">add_shopping_cart</span></a>';
 					echo '</div>';
@@ -45,11 +45,11 @@
 				foreach($produtos as $produto):
 				if($produto->tipo == "camiseta" && $produto->genero == "feminino"):
 				echo '<div class="produto" id = "camisetaFeminina' . $cont.'">';
-					echo $this->Html->image('camisetas\camisetas_femininas\camiseta_feminina' . $cont . '.jpg', ['alt' => $produto->nome, 'class' => 'imagensProdutos']);
+					echo $this->Html->image($produto->imagem, ['alt' => $produto->nome, 'class' => 'imagensProdutos']);
 					echo '<div id="infoProduto">';
-						echo '<span class="nomeProduto">' . $produto->nome . '</span>';
+						echo '<a href="' . $this->Url->build(['controller'=>'Users', 'action'=>'detalhes', $produto->id]) . '" class="nomeProduto">' . $produto->nome . '</a>';
 						echo '<span class="precoProduto">' . number_format($produto->preco, 2, ',', '') . '</span>';
-						echo '<a href="' . $this->Url->build(['controller'=>'CarrinhoDeCompras', 'action'=>'adicionarAoCarrinhoDeCompras']) . '" class="button"><span class="material-icons iconeAdicionarCarrinho">add_shopping_cart</span></a>';
+						echo '<button><span class="material-icons iconeAdicionarCarrinho">add_shopping_cart</span></button>';
 					echo '</div>';
 				echo '</div>';
 				$cont++; 
