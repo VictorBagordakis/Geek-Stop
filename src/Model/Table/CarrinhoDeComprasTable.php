@@ -24,6 +24,8 @@ use Cake\Validation\Validator;
  * @method \App\Model\Entity\CarrinhoDeCompra[]|\Cake\Datasource\ResultSetInterface saveManyOrFail(iterable $entities, $options = [])
  * @method \App\Model\Entity\CarrinhoDeCompra[]|\Cake\Datasource\ResultSetInterface|false deleteMany(iterable $entities, $options = [])
  * @method \App\Model\Entity\CarrinhoDeCompra[]|\Cake\Datasource\ResultSetInterface deleteManyOrFail(iterable $entities, $options = [])
+ *
+ * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
 class CarrinhoDeComprasTable extends Table
 {
@@ -38,6 +40,10 @@ class CarrinhoDeComprasTable extends Table
         parent::initialize($config);
 
         $this->setTable('carrinho_de_compras');
+        $this->setDisplayField('idUser');
+        $this->setPrimaryKey(['idUser', 'idProduto']);
+
+        $this->addBehavior('Timestamp');
     }
 
     /**
@@ -57,6 +63,14 @@ class CarrinhoDeComprasTable extends Table
             ->integer('idProduto')
             ->requirePresence('idProduto', 'create')
             ->notEmptyString('idProduto');
+
+        $validator
+            ->integer('quantidade')
+            ->notEmptyString('quantidade');
+
+        $validator
+            ->integer('id')
+            ->allowEmptyString('id', null, 'create');
 
         return $validator;
     }

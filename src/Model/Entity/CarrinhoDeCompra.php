@@ -10,6 +10,10 @@ use Cake\ORM\Entity;
  *
  * @property int $idUser
  * @property int $idProduto
+ * @property int $quantidade
+ * @property int $id
+ * @property \Cake\I18n\FrozenTime $created
+ * @property \Cake\I18n\FrozenTime $modified
  */
 class CarrinhoDeCompra extends Entity
 {
@@ -25,5 +29,8 @@ class CarrinhoDeCompra extends Entity
     protected $_accessible = [
         'idUser' => true,
         'idProduto' => true,
+        'quantidade' => true,
+        'created' => true,
+        'modified' => true,
     ];
 }

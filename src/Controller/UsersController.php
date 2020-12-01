@@ -148,11 +148,15 @@ class UsersController extends AppController
     public function carrinhoDeCompras()
     {
         $this->viewBuilder()->setLayout('users');
+
+        $carrinho = TableRegistry::get('carrinho_de_compras');
+        $query = $carrinho->find('all');
+        $this->set('produtosCarrinho', $query);   
     }
 
     public function perfil()
     {
-
+        $this->viewBuilder()->setLayout('users');
     }
 
     public function detalhes($id)

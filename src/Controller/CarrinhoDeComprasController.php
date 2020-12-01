@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Controller;
+use Cake\ORM\TableRegistry;
 
 /**
  * CarrinhoDeCompras Controller
@@ -23,9 +24,51 @@ class CarrinhoDeComprasController extends AppController
         $this->set(compact('carrinhoDeCompras'));
     }
 
-    public function adicionarAoCarrinhoDeCompras()
+    public function adicionarAoCarrinhoDeCompras($idProduto, $idUser)
     {
-        
+        $condicoes = array('idProduto'=>$idProduto,
+                           'idUser'=>$idUser);
+        if(TableRegistry::get('CarrinhoDeCompras')->exists(['idUser' => $idUser, 'idProduto' => $idProduto])){
+            return $this->redirect(['controller'=>'Users', 'action'=>'carrinhoDeCompras']);    
+        }
+
+        else{
+            $novoProdutoCarrinho = $this->CarrinhoDeCompras->newEmptyEntity();
+            $novoProdutoCarrinho->idUser = $idUser;
+            $novoProdutoCarrinho->idProduto = $idProduto;
+            $novoProdutoCarrinho->quantidade += 1;
+            
+            if ($this->CarrinhoDeCompras->save($novoProdutoCarrinho)) {
+                $this->Flash->success(__('Esse produto foi adicionado ao seu carrinho.'), ['key'=>'carrinhoSuccessMessage']);
+                return $this->redirect(['controller'=>'Users', 'action'=>'carrinhoDeCompras']);
+            }
+            $this->Flash->error(__('Não foi possível adicionar o produto ao carrinho.'), ['key'=>'carrinhoErrorMessage']);
+        }
+    }
+
+    public function adicionarUmAoCarrinhoDeCompras($id){
+        $carrinho = TableRegistry::get('carrinho_de_compras');
+        $produtoCarrinho = $carrinho->get($id);
+        $produtoCarrinho->quantidade += 1;
+        if($this->CarrinhoDeCompras->save($produtoCarrinho)){
+            $this->Flash->success(__('Esse produto foi adicionado ao seu carrinho.'), ['key'=>'adicionarMaisUmSuccessMessage']);
+            return $this->redirect(['controller'=>'Users', 'action'=>'carrinhoDeCompras']);
+        }
+        $this->Flash->error(__('Não foi possível adicionar o produto ao carrinho.'), ['key'=>'adicionarMaisUmErrorMessage']);
+    }
+
+    public function removerUmDoCarrinhoDeCompras($id){
+        $carrinho = TableRegistry::get('carrinho_de_compras');
+        $produtoCarrinho = $carrinho->get($id);
+        if($produtoCarrinho->quantidade > 1){
+            $produtoCarrinho->quantidade -= 1;
+            $carrinho->save($produtoCarrinho);
+            return $this->redirect(['controller'=>'Users', 'action'=>'carrinhoDeCompras']);
+        }
+        else{
+            $carrinho->delete($produtoCarrinho);
+            return $this->redirect(['controller'=>'Users', 'action'=>'carrinhoDeCompras']);
+        }
     }
 
     /**

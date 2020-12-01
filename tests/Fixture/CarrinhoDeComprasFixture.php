@@ -19,9 +19,16 @@ class CarrinhoDeComprasFixture extends TestFixture
     public $fields = [
         'idUser' => ['type' => 'integer', 'length' => null, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'idProduto' => ['type' => 'integer', 'length' => null, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'quantidade' => ['type' => 'integer', 'length' => null, 'unsigned' => false, 'null' => false, 'default' => '0', 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'id' => ['type' => 'integer', 'length' => null, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
+        'created' => ['type' => 'timestamp', 'length' => null, 'precision' => null, 'null' => false, 'default' => 'current_timestamp()', 'comment' => ''],
+        'modified' => ['type' => 'timestamp', 'length' => null, 'precision' => null, 'null' => false, 'default' => 'current_timestamp()', 'comment' => ''],
         '_indexes' => [
-            'idUser' => ['type' => 'index', 'columns' => ['idUser'], 'length' => []],
             'idProduto' => ['type' => 'index', 'columns' => ['idProduto'], 'length' => []],
+        ],
+        '_constraints' => [
+            'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
+            'ForeignKey' => ['type' => 'unique', 'columns' => ['idUser', 'idProduto'], 'length' => []],
         ],
         '_options' => [
             'engine' => 'MyISAM',
@@ -40,6 +47,10 @@ class CarrinhoDeComprasFixture extends TestFixture
             [
                 'idUser' => 1,
                 'idProduto' => 1,
+                'quantidade' => 1,
+                'id' => 1,
+                'created' => 1606792726,
+                'modified' => 1606792726,
             ],
         ];
         parent::init();
