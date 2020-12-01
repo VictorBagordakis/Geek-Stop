@@ -7,5 +7,5 @@ CREATE TABLE carrinho_de_compras(
     modified timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY(idUser) REFERENCES users(id),
     FOREIGN KEY(idProduto) REFERENCES produtos(id),
-    CONSTRAINT ForeignKey (idUser, idProduto) UNIQUE
+    CONSTRAINT ForeignKey UNIQUE (idUser, idProduto)
 );
