@@ -1,4 +1,5 @@
-Após baixar o arquivo do repositório, é necessário executar o comando "composer install" no terminal.
+Após baixar o arquivo do repositório, é necessário executar o comando "composer install" no terminal na pasta do projeto.
 Também é necessário configurar corretamente o arquivo /config/app_local.php para conseguir fazer a conexão com o banco de dados. No meu caso, foi necessário alterar "port" para 3307.
-O usuário criado para o banco de dados tem como "username" = "geekstop" e "password" = "geekstop".
+O usuário criado para o banco de dados tem como "username" = "geekstop" e "password" = "geekstop". Os schemas necessários para criar as tabelas estão localizados em config/schema.
+Então, basta executar "bin/cake server" e acessar http://localhost:8765/geekstop para ser redirecionado para a página inicial do site.
 

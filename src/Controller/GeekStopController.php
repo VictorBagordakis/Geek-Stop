@@ -4,72 +4,69 @@ namespace App\Controller;
 use Cake\Event\EventInterface;
 use Cake\ORM\TableRegistry;
 
+/* Esse controlador é responsável por chamar a view correta para um visitante do site.*/
+
 class GeekStopController extends AppController
 {
-    /**
-     * Index method
-     *
-     * @return \Cake\Http\Response|null|void Renders view
-     */
-    
+    /*
+    *
+    * Os métodos casacos(), camisetas(), colecionaveis(), bones() e index() passam as suas respectivas views um array contendo os produtos encontrados
+    * no banco de dados, para que essas views possam acessar essa informação.
+    *
+    */
+
+    /*Esse método define "geekstop" como layout para as views desse controlador*/
     public function beforeFilter(EventInterface $event)
     {
         $this->viewBuilder()->setLayout('geekstop');
-
-
     }
 
+    /*método para a chamar a página inicial de um visitante*/
     public function index()
     {
-        $this->viewBuilder()->setLayout('geekstop');
         $produtos = TableRegistry::get('produtos');
         $query = $produtos->find('all');
         $this->set('produtos', $query);   
     }
 
-
-    public function ajuda()
-    {
-
-    }
-
+    /*Método responsável por chamar a view carrinho de compras na visão de um visitante*/
     public function carrinhoDeCompras()
     {
         
     }
 
+    /*Método responsável por chamar a view casacos na visão de um visitante*/
     public function casacos()
     {
-        $this->viewBuilder()->setLayout('geekstop');
         $produtos = TableRegistry::get('produtos');
         $query = $produtos->find('all');
         $this->set('produtos', $query);
     }
 
+    /*Método responsável por chamar a view camisetas na visão de um visitante*/
     public function camisetas(){
-        $this->viewBuilder()->setLayout('geekstop');
         $produtos = TableRegistry::get('produtos');
         $query = $produtos->find('all');
         $this->set('produtos', $query);
     }
 
+    /*Método responsável por chamar a view colecionaveis na visão de um visitante*/
     public function colecionaveis(){
-        $this->viewBuilder()->setLayout('geekstop');
         $produtos = TableRegistry::get('produtos');
         $query = $produtos->find('all');
         $this->set('produtos', $query);
     }
 
+    /*Método responsável por chamar a view bones na visão de um visitante*/
     public function bones(){
-        $this->viewBuilder()->setLayout('geekstop');
         $produtos = TableRegistry::get('produtos');
         $query = $produtos->find('all');
         $this->set('produtos', $query);
     }
 
-    public function detalhes($id)
+    /*Método responsável por chamar a view de detalhes de um produto na visão de um visitante*/
+    public function detalhes(string $id)
     {
-        $this->viewBuilder()->setLayout('geekstop');
         $produtos = TableRegistry::get('produtos');
         $produto = $produtos->get($id);
         $this->set('produto', $produto);

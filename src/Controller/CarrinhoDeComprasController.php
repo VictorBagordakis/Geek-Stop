@@ -24,6 +24,9 @@ class CarrinhoDeComprasController extends AppController
         $this->set(compact('carrinhoDeCompras'));
     }
 
+    /*Método para adicionar um novo produto ao carrinho de compras. Se o produto já estiver no carrinho de compras do usuário,
+    a quantida não é incrementada, e o produto não é salvo novamente. O produto só será salvo se ele não estiver no carrinho
+    anteriormente */
     public function adicionarAoCarrinhoDeCompras($idProduto, $idUser)
     {
         $condicoes = array('idProduto'=>$idProduto,
@@ -46,6 +49,7 @@ class CarrinhoDeComprasController extends AppController
         }
     }
 
+    /* Método responsáve por incrementar a quantidade de um determinado produto no carrinho de compras do usuário*/
     public function adicionarUmAoCarrinhoDeCompras($id){
         $carrinho = TableRegistry::get('carrinho_de_compras');
         $produtoCarrinho = $carrinho->get($id);
@@ -57,6 +61,8 @@ class CarrinhoDeComprasController extends AppController
         $this->Flash->error(__('Não foi possível adicionar o produto ao carrinho.'), ['key'=>'adicionarMaisUmErrorMessage']);
     }
 
+    /* Método responsável por remover um determinado produto de um carrinho de compras. Se a quantidade chegar a 0, o
+    * produto é removido do banco de dados */
     public function removerUmDoCarrinhoDeCompras($id){
         $carrinho = TableRegistry::get('carrinho_de_compras');
         $produtoCarrinho = $carrinho->get($id);
